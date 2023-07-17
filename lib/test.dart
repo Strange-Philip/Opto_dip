@@ -11,20 +11,20 @@ class TestContainer extends StatefulWidget {
 class _TestContainerState extends State<TestContainer> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: DiplopiaModel(),
     );
   }
 }
 
 class DiplopiaModel extends StatefulWidget {
+  const DiplopiaModel({super.key});
+
   @override
   _DiplopiaModelState createState() => _DiplopiaModelState();
 }
 
 class _DiplopiaModelState extends State<DiplopiaModel> {
-  // bool rightTrigNerveTapped = false;
-  // bool leftTrigNerveTapped = false;
   bool leftGaze = false;
   bool rightGaze = false;
   bool upGaze = false;
@@ -65,7 +65,7 @@ class _DiplopiaModelState extends State<DiplopiaModel> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Center(
@@ -138,41 +138,5 @@ class _DiplopiaModelState extends State<DiplopiaModel> {
       });
       return 'Center';
     }
-  }
-}
-
-class EyeDiagramPainter extends CustomPainter {
-  final double horizontalOffset;
-  final double verticalOffset;
-
-  EyeDiagramPainter(this.horizontalOffset, this.verticalOffset);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final eyePaint = Paint()
-      ..color = Colors.blue
-      ..style = PaintingStyle.fill;
-
-    final leftEyeRect = Rect.fromLTWH(
-      size.width * 0.2 - horizontalOffset,
-      size.height * 0.4 - verticalOffset,
-      size.width * 0.3,
-      size.height * 0.2,
-    );
-
-    final rightEyeRect = Rect.fromLTWH(
-      size.width * 0.5 + horizontalOffset,
-      size.height * 0.4 - verticalOffset,
-      size.width * 0.3,
-      size.height * 0.2,
-    );
-
-    canvas.drawOval(leftEyeRect, eyePaint);
-    canvas.drawOval(rightEyeRect, eyePaint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
   }
 }

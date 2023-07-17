@@ -405,7 +405,7 @@ class _HorizontalDipState extends State<HorizontalDip> {
               ],
             ),
             const Spacer(),
-            Container(
+            SizedBox(
               width: 500,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

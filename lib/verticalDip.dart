@@ -414,7 +414,7 @@ class _VerticalDipState extends State<VerticalDip> {
               ],
             ),
             const Spacer(),
-            Container(
+            SizedBox(
               width: 500,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

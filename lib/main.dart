@@ -1,4 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:orthoptics/instructions.dart';
 import 'package:orthoptics/verticalDip.dart';
 import 'package:orthoptics/horizontalDip.dart';
 import 'package:orthoptics/test.dart';
@@ -22,15 +23,15 @@ class _MyAppState extends State<MyApp> {
     return FluentApp(
       debugShowCheckedModeBanner: false,
       // ignore: deprecated_member_use
-      theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          accentColor: Colors.blue,
-          iconTheme: const IconThemeData(size: 24)),
-      // ignore: deprecated_member_use
-      darkTheme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          accentColor: Colors.blue,
-          iconTheme: const IconThemeData(size: 24)),
+      // theme: ThemeData(
+      //     scaffoldBackgroundColor: Colors.white,
+      //     accentColor: Colors.blue,
+      //     iconTheme: const IconThemeData(size: 24)),
+      // // ignore: deprecated_member_use
+      // darkTheme: ThemeData(
+      //     scaffoldBackgroundColor: Colors.white,
+      //     accentColor: Colors.blue,
+      //     iconTheme: const IconThemeData(size: 24)),
       home: NavigationView(
         appBar: const NavigationAppBar(
             title: Text(
@@ -51,6 +52,10 @@ class _MyAppState extends State<MyApp> {
             ),
             displayMode: PaneDisplayMode.auto,
             items: [
+              PaneItem(
+                  icon: const Icon(FluentIcons.info),
+                  title: const Text("Instructions"),
+                  body: const InstructionPage()),
               PaneItem(
                   icon: const Icon(FluentIcons.gripper_dots_vertical),
                   title: const Text("Vertical Diplopia"),
