@@ -57,13 +57,13 @@ class _MyAppState extends State<MyApp> {
                   title: const Text("Instructions"),
                   body: const InstructionPage()),
               PaneItem(
-                  icon: const Icon(FluentIcons.gripper_dots_vertical),
-                  title: const Text("Vertical Diplopia"),
-                  body: const VerticalDip()),
-              PaneItem(
                   icon: const Icon(FluentIcons.horizontal_tab_key),
                   title: const Text("Horizontal Diplopia"),
                   body: const HorizontalDip()),
+              PaneItem(
+                  icon: const Icon(FluentIcons.gripper_dots_vertical),
+                  title: const Text("Vertical Diplopia"),
+                  body: const VerticalDip()),
               PaneItem(
                   icon: const Icon(FluentIcons.red_eye),
                   title: const Text("Test"),

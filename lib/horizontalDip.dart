@@ -13,14 +13,88 @@ class HorizontalDip extends StatefulWidget {
 class _HorizontalDipState extends State<HorizontalDip> {
   bool rightOccNerveTapped = false;
   bool leftOccNerveTapped = false;
-  bool rightAbducensNerveTapped = false;
+  bool rightAbducensTapped = false;
+  bool rightPCGDoubleTapped = false;
   bool leftAbducensTapped = false;
+  bool leftDuane = false;
+  bool rightDuane = false;
+  bool leftPCGDoubleTapped = false;
+  bool doubleTap = false;
+  bool rightMLFtapped = false;
+  bool rightMLFDoubleTapped = false;
+  bool leftMLFTapped = false;
+  bool leftMLFDoubleTapped = false;
   bool leftGaze = false;
   bool rightGaze = false;
   bool upGaze = false;
   bool downGaze = false;
   bool normalGaze = true;
   String directionText = 'Center';
+
+  void setToFalse({required String parameter, String? exception}) {
+    setState(() {
+      rightMLFtapped = exception.toString() == "rightMLFtapped"
+          ? rightMLFtapped
+          : parameter.toString() == "rightMLFtapped"
+              ? !rightMLFtapped
+              : false;
+      leftMLFTapped = exception.toString() == "leftMLFTapped"
+          ? leftMLFTapped
+          : parameter.toString() == "leftMLFTapped"
+              ? !leftMLFTapped
+              : false;
+      leftDuane = exception.toString() == "leftDuane"
+          ? leftDuane
+          : parameter.toString() == "leftDuane"
+              ? !leftDuane
+              : false;
+      rightDuane = exception.toString() == "rightDuane"
+          ? rightDuane
+          : parameter.toString() == "rightDuane"
+              ? !rightDuane
+              : false;
+      rightMLFDoubleTapped = exception.toString() == "rightMLFDoubleTapped"
+          ? rightMLFDoubleTapped
+          : parameter.toString() == "rightMLFDoubleTapped"
+              ? !rightMLFDoubleTapped
+              : false;
+      leftMLFDoubleTapped = exception.toString() == "leftMLFDoubleTapped"
+          ? leftMLFDoubleTapped
+          : parameter.toString() == "leftMLFDoubleTapped"
+              ? !leftMLFDoubleTapped
+              : false;
+      leftOccNerveTapped = exception.toString() == "leftOccNerveTapped"
+          ? leftOccNerveTapped
+          : parameter.toString() == "leftOccNerveTapped"
+              ? !leftOccNerveTapped
+              : false;
+      rightOccNerveTapped = exception.toString() == "rightOccNerveTapped"
+          ? rightOccNerveTapped
+          : parameter.toString() == "rightOccNerveTapped"
+              ? !rightOccNerveTapped
+              : false;
+      leftAbducensTapped = exception.toString() == "leftAbducensTapped"
+          ? leftAbducensTapped
+          : parameter.toString() == "leftAbducensTapped"
+              ? !leftAbducensTapped
+              : false;
+      rightPCGDoubleTapped = exception.toString() == "rightPCGDoubleTapped"
+          ? rightPCGDoubleTapped
+          : parameter.toString() == "rightPCGDoubleTapped"
+              ? !rightPCGDoubleTapped
+              : false;
+      rightAbducensTapped = exception.toString() == "rightAbducensTapped"
+          ? rightAbducensTapped
+          : parameter.toString() == "rightAbducensTapped"
+              ? !rightAbducensTapped
+              : false;
+      leftPCGDoubleTapped = exception.toString() == "leftPCGDoubleTapped"
+          ? leftPCGDoubleTapped
+          : parameter.toString() == "leftPCGDoubleTapped"
+              ? !leftPCGDoubleTapped
+              : false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +113,11 @@ class _HorizontalDipState extends State<HorizontalDip> {
                           ? "Right Oculomotor Nerve Damage"
                           : leftOccNerveTapped == true
                               ? "Left Oculomotor Nerve Damage"
-                              : leftAbducensTapped == true && rightAbducensNerveTapped == true
+                              : leftAbducensTapped == true && rightAbducensTapped == true
                                   ? "Both Abducens nerves Damage"
                                   : leftAbducensTapped == true
                                       ? "Left Abducens nerve Damage"
-                                      : rightAbducensNerveTapped == true
+                                      : rightAbducensTapped == true
                                           ? "Right Abducens nerve Damage"
                                           : "No Damage",
                   style: const TextStyle(color: Colors.red, fontSize: 16),
@@ -65,11 +139,7 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightOccNerveTapped = !rightOccNerveTapped;
-                              leftAbducensTapped = false;
-                              rightAbducensNerveTapped = false;
-                            });
+                            setToFalse(parameter: "rightOccNerveTapped");
                             debugPrint('Right occulomotor nerve tapped');
                           },
                           child: Container(
@@ -90,11 +160,7 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightOccNerveTapped = !rightOccNerveTapped;
-                              leftAbducensTapped = false;
-                              rightAbducensNerveTapped = false;
-                            });
+                            setToFalse(parameter: "rightOccNerveTapped");
                             debugPrint('Right occulomotor nerve tapped');
                           },
                           child: Container(
@@ -115,11 +181,7 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftOccNerveTapped = !leftOccNerveTapped;
-                              leftAbducensTapped = false;
-                              rightAbducensNerveTapped = false;
-                            });
+                            setToFalse(parameter: "leftOccNerveTapped");
                             debugPrint('Left occulomotor nerve tapped');
                           },
                           child: Container(
@@ -140,11 +202,7 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftOccNerveTapped = !leftOccNerveTapped;
-                              leftAbducensTapped = false;
-                              rightAbducensNerveTapped = false;
-                            });
+                            setToFalse(parameter: "leftOccNerveTapped");
                             debugPrint('Left occulomotor nerve tapped');
                           },
                           child: Container(
@@ -165,11 +223,7 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightOccNerveTapped = !rightOccNerveTapped;
-                              leftAbducensTapped = false;
-                              rightAbducensNerveTapped = false;
-                            });
+                            setToFalse(parameter: "rightOccNerveTapped");
                             debugPrint('Right occulomotor nerve tapped');
                           },
                           child: Container(
@@ -189,11 +243,7 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftOccNerveTapped = !leftOccNerveTapped;
-                              leftAbducensTapped = false;
-                              rightAbducensNerveTapped = false;
-                            });
+                            setToFalse(parameter: "leftOccNerveTapped");
                             debugPrint('Left occulomotor nerve tapped');
                           },
                           child: Container(
@@ -213,18 +263,22 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftAbducensTapped = !leftAbducensTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                            });
+                            setToFalse(parameter: "leftAbducensTapped");
                             debugPrint('Left Abducens nerve tapped');
+                          },
+                          onLongPress: () {
+                            setToFalse(parameter: "leftDuane");
+                            debugPrint('Left Abducens nerve long press');
                           },
                           child: Container(
                               width: 30,
                               height: 30,
                               decoration: BoxDecoration(
-                                  color: leftAbducensTapped ? Colors.red : Colors.transparent,
+                                  color: leftDuane
+                                      ? Colors.red[800]
+                                      : leftAbducensTapped
+                                          ? Colors.red
+                                          : Colors.transparent,
                                   borderRadius: BorderRadius.circular(15))),
                         ),
                       ),
@@ -236,18 +290,22 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftAbducensTapped = !leftAbducensTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                            });
+                            setToFalse(parameter: "leftAbducensTapped");
                             debugPrint('Left Abducens nerve tapped');
+                          },
+                          onLongPress: () {
+                            setToFalse(parameter: "leftDuane");
+                            debugPrint('Left Abducens nerve long press');
                           },
                           child: Container(
                               width: 8,
                               height: 30,
                               decoration: BoxDecoration(
-                                  color: leftAbducensTapped ? Colors.red : Colors.transparent,
+                                  color: leftDuane
+                                      ? Colors.red[800]
+                                      : leftAbducensTapped
+                                          ? Colors.red
+                                          : Colors.transparent,
                                   borderRadius: BorderRadius.circular(15))),
                         ),
                       ),
@@ -259,18 +317,22 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftAbducensTapped = !leftAbducensTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                            });
+                            setToFalse(parameter: "leftAbducensTapped");
                             debugPrint('Left Abducens nerve tapped');
+                          },
+                          onLongPress: () {
+                            setToFalse(parameter: "leftDuane");
+                            debugPrint('Left Abducens nerve long press');
                           },
                           child: Container(
                             width: 135,
                             height: 8,
                             decoration: BoxDecoration(
-                                color: leftAbducensTapped ? Colors.red : Colors.transparent,
+                                color: leftDuane
+                                    ? Colors.red[800]
+                                    : leftAbducensTapped
+                                        ? Colors.red
+                                        : Colors.transparent,
                                 borderRadius:
                                     const BorderRadius.only(bottomRight: Radius.circular(6))),
                           ),
@@ -284,18 +346,18 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftAbducensTapped = !leftAbducensTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                            });
+                            setToFalse(parameter: "leftAbducensTapped");
                             debugPrint('Left Abducens nerve tapped');
                           },
                           child: Container(
                             width: 8,
                             height: 397,
                             decoration: BoxDecoration(
-                                color: leftAbducensTapped ? Colors.red : Colors.transparent,
+                                color: leftDuane
+                                    ? Colors.red[800]
+                                    : leftAbducensTapped
+                                        ? Colors.red
+                                        : Colors.transparent,
                                 borderRadius:
                                     const BorderRadius.only(bottomRight: Radius.circular(6))),
                           ),
@@ -309,18 +371,22 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightAbducensNerveTapped = !rightAbducensNerveTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                            });
+                            setToFalse(parameter: "rightAbducensTapped");
                             debugPrint('Right Abducens nerve tapped');
+                          },
+                          onLongPress: () {
+                            setToFalse(parameter: "rightDuane");
+                            debugPrint('Right Abducens nerve long press');
                           },
                           child: Container(
                             width: 8,
                             height: 397,
                             decoration: BoxDecoration(
-                                color: rightAbducensNerveTapped ? Colors.red : Colors.transparent,
+                                color: rightDuane
+                                    ? Colors.red[800]
+                                    : rightAbducensTapped
+                                        ? Colors.red
+                                        : Colors.transparent,
                                 borderRadius:
                                     const BorderRadius.only(bottomLeft: Radius.circular(6))),
                           ),
@@ -334,18 +400,22 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightAbducensNerveTapped = !rightAbducensNerveTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                            });
+                            setToFalse(parameter: "rightAbducensTapped");
                             debugPrint('Right Abducens nerve tapped');
+                          },
+                          onLongPress: () {
+                            setToFalse(parameter: "rightDuane");
+                            debugPrint('Right Abducens nerve long press');
                           },
                           child: Container(
                             width: 8,
                             height: 20,
                             decoration: BoxDecoration(
-                                color: rightAbducensNerveTapped ? Colors.red : Colors.transparent,
+                                color: rightDuane
+                                    ? Colors.red[800]
+                                    : rightAbducensTapped
+                                        ? Colors.red
+                                        : Colors.transparent,
                                 borderRadius:
                                     const BorderRadius.only(bottomRight: Radius.circular(6))),
                           ),
@@ -359,18 +429,22 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightAbducensNerveTapped = !rightAbducensNerveTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                            });
+                            setToFalse(parameter: "rightAbducensTapped");
                             debugPrint('Right Abducens nerve tapped');
+                          },
+                          onLongPress: () {
+                            setToFalse(parameter: "rightDuane");
+                            debugPrint('Right Abducens nerve long press');
                           },
                           child: Container(
                             width: 30,
                             height: 30,
                             decoration: BoxDecoration(
-                                color: rightAbducensNerveTapped ? Colors.red : Colors.transparent,
+                                color: rightDuane
+                                    ? Colors.red[800]
+                                    : rightAbducensTapped
+                                        ? Colors.red
+                                        : Colors.transparent,
                                 borderRadius: BorderRadius.circular(15)),
                           ),
                         ),
@@ -383,19 +457,139 @@ class _HorizontalDipState extends State<HorizontalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightAbducensNerveTapped = !rightAbducensNerveTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                            });
+                            setToFalse(parameter: "rightAbducensTapped");
                             debugPrint('Right Abducens nerve tapped');
+                          },
+                          onLongPress: () {
+                            setToFalse(parameter: "rightDuane");
+                            debugPrint('Right Abducens nerve long press');
                           },
                           child: Container(
                             width: 145,
                             height: 8,
                             decoration: BoxDecoration(
-                                color: rightAbducensNerveTapped ? Colors.red : Colors.transparent,
+                                color: rightDuane
+                                    ? Colors.red[800]
+                                    : rightAbducensTapped
+                                        ? Colors.red
+                                        : Colors.transparent,
                                 borderRadius: BorderRadius.circular(15)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 300,
+                      left: 242,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            setToFalse(parameter: "rightMLFtapped");
+                            debugPrint('Right MLF nerve tapped');
+                          },
+                          onDoubleTap: () {
+                            setToFalse(
+                                parameter: "rightMLFDoubleTapped",
+                                exception: "rightPCGDoubleTapped");
+                            debugPrint('Right MLF nerve double tapped');
+                          },
+                          child: Container(
+                            width: 9,
+                            height: 90,
+                            decoration: BoxDecoration(
+                                color: rightMLFDoubleTapped
+                                    ? Colors.red[800]
+                                    : rightMLFtapped
+                                        ? Colors.red
+                                        : Colors.black54,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: const Center(
+                              child: Text(
+                                "M\nL\nF",
+                                style: TextStyle(fontSize: 10),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 300,
+                      left: 251,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            setToFalse(
+                              parameter: "leftMLFTapped",
+                            );
+                            debugPrint('Left MLF nerve tapped');
+                          },
+                          onDoubleTap: () {
+                            setToFalse(
+                                parameter: "leftMLFDoubleTapped", exception: "leftPCGDoubleTapped");
+                            debugPrint('Left MLF nerve double tapped');
+                          },
+                          child: Container(
+                            width: 9,
+                            height: 90,
+                            decoration: BoxDecoration(
+                                color: leftMLFDoubleTapped
+                                    ? Colors.red[800]
+                                    : leftMLFTapped
+                                        ? Colors.red
+                                        : Colors.black54,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: const Center(
+                              child: Text(
+                                "M\nL\nF",
+                                style: TextStyle(fontSize: 10),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 422,
+                      left: 292,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onDoubleTap: () {
+                            setToFalse(
+                                parameter: "leftPCGDoubleTapped", exception: "leftMLFDoubleTapped");
+                            debugPrint('Left PCG nerve double tapped');
+                          },
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                                color: leftPCGDoubleTapped ? Colors.red[800] : Colors.transparent,
+                                borderRadius: BorderRadius.circular(5)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 422,
+                      left: 180,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onDoubleTap: () {
+                            setToFalse(
+                                parameter: "rightPCGDoubleTapped",
+                                exception: "rightMLFDoubleTapped");
+                            debugPrint('Right PCG nerve double tapped');
+                          },
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                                color: rightPCGDoubleTapped ? Colors.red[800] : Colors.transparent,
+                                borderRadius: BorderRadius.circular(5)),
                           ),
                         ),
                       ),
@@ -422,13 +616,11 @@ class _HorizontalDipState extends State<HorizontalDip> {
                             ? "Name: Left CN III Palsy"
                             : rightOccNerveTapped == true && leftOccNerveTapped == true
                                 ? "Name: CN III Palsy on Both Eyes"
-                                : rightAbducensNerveTapped == true && leftAbducensTapped == false
+                                : rightAbducensTapped == true && leftAbducensTapped == false
                                     ? "Name: Right Sixth Nerve Palsy"
-                                    : rightAbducensNerveTapped == false &&
-                                            leftAbducensTapped == true
+                                    : rightAbducensTapped == false && leftAbducensTapped == true
                                         ? "Name: Left Sixth Nerve Palsy"
-                                        : rightAbducensNerveTapped == true &&
-                                                leftAbducensTapped == true
+                                        : rightAbducensTapped == true && leftAbducensTapped == true
                                             ? "Name: Sixth Nerve Palsy on Both Eyes"
                                             : "Normal",
                     style: const TextStyle(color: Color(0xff000000), fontSize: 24),
@@ -436,16 +628,16 @@ class _HorizontalDipState extends State<HorizontalDip> {
                   Text(
                     rightOccNerveTapped == true || leftOccNerveTapped == true
                         ? "Signs: Defective superior rectus, inferior rectus, inferior oblique, ptosis, mydriasis"
-                        : leftAbducensTapped == true || rightAbducensNerveTapped == true
-                            ? "Signs: Defective superior oblique, head tilt, hypertropia "
+                        : leftAbducensTapped == true || rightAbducensTapped == true
+                            ? "Signs: Impaired abduction in affected eye, esotropia  "
                             : "",
                     style: const TextStyle(color: Color(0xff000000), fontSize: 24),
                   ),
                   Text(
                     rightOccNerveTapped == true || leftOccNerveTapped == true
                         ? "Symptoms: Vertical diplopia, pain, vision loss due to ptosis \nCause of lesion: Trauma,ataxia, aneurysm"
-                        : leftAbducensTapped == true || rightAbducensNerveTapped == true
-                            ? "Symptoms: Horizontal diplopia "
+                        : leftAbducensTapped == true || rightAbducensTapped == true
+                            ? "Symptoms: Horizontal diplopia worse in distance \nCause of lesion: Tumors, trauma, stroke, idiopathic"
                             : "",
                     style: const TextStyle(color: Color(0xff000000), fontSize: 24),
                   ),
@@ -473,11 +665,9 @@ class _HorizontalDipState extends State<HorizontalDip> {
                                 ? "images/${leftGaze ? "rg" : rightGaze ? "lg" : "ng"}-right-3palsy.svg"
                                 : rightOccNerveTapped == false && leftOccNerveTapped == true
                                     ? "images/${leftGaze ? "rg" : rightGaze ? "lg" : "ng"}-left-3palsy.svg"
-                                    : rightAbducensNerveTapped == true &&
-                                            leftAbducensTapped == false
+                                    : rightAbducensTapped == true && leftAbducensTapped == false
                                         ? "images/${leftGaze ? "rg" : rightGaze ? "lg" : "ng"}-right-6palsy.svg"
-                                        : rightAbducensNerveTapped == false &&
-                                                leftAbducensTapped == true
+                                        : rightAbducensTapped == false && leftAbducensTapped == true
                                             ? "images/${leftGaze ? "rg" : rightGaze ? "lg" : "ng"}-left-6palsy.svg"
                                             : 'images/${leftGaze ? "right" : rightGaze ? "left" : upGaze ? "up" : downGaze ? "down" : "normal"}-gaze.svg',
                             width: 100,
@@ -489,7 +679,7 @@ class _HorizontalDipState extends State<HorizontalDip> {
                   ),
                   Center(
                     child: Text(
-                      "$directionText gaze${rightOccNerveTapped == true && leftOccNerveTapped == false ? " with Right CN III Palsy" : rightOccNerveTapped == false && leftOccNerveTapped == true ? " with Left CN III Palsy" : rightOccNerveTapped == true && leftOccNerveTapped == true ? " with CN III Palsy on Both Eyes" : rightAbducensNerveTapped == true && leftAbducensTapped == false ? " with Right CN VI Palsy" : rightAbducensNerveTapped == false && leftAbducensTapped == true ? " with Left CN VI Palsy" : rightAbducensNerveTapped == true && leftAbducensTapped == true ? " with CN VI Palsy on Both Eyes" : ""}",
+                      "$directionText gaze${rightOccNerveTapped == true && leftOccNerveTapped == false ? " with Right CN III Palsy" : rightOccNerveTapped == false && leftOccNerveTapped == true ? " with Left CN III Palsy" : rightOccNerveTapped == true && leftOccNerveTapped == true ? " with CN III Palsy on Both Eyes" : rightAbducensTapped == true && leftAbducensTapped == false ? " with Right CN VI Palsy" : rightAbducensTapped == false && leftAbducensTapped == true ? " with Left CN VI Palsy" : rightAbducensTapped == true && leftAbducensTapped == true ? " with CN VI Palsy on Both Eyes" : ""}",
                       style: const TextStyle(color: Color(0xff000000), fontSize: 16),
                     ),
                   ),

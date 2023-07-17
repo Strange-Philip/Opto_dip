@@ -44,6 +44,13 @@ class _InstructionPageState extends State<InstructionPage> {
                       ),
                     ),
                     const Text(
+                      "Long Press to select a have an alternate cause of a lesion.",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                    const Text(
                       "Hover on the box on the bottom right to change the position of gaze based on the direction in which you move your mouse.",
                       maxLines: 3,
                       style: TextStyle(
