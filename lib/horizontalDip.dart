@@ -127,9 +127,9 @@ class _HorizontalDipState extends State<HorizontalDip> {
         : leftAbducensTapped || rightAbducensTapped
             ? "6palsy.svg"
             : rightDuane || leftDuane
-                ? "duan-syn.svg"
-                : (rightMLFDoubleTapped && rightMLFDoubleTapped) ||
-                        (leftMLFDoubleTapped || leftPCGDoubleTapped)
+                ? "duane-syn.svg"
+                : (rightMLFDoubleTapped && rightPCGDoubleTapped) ||
+                        (leftMLFDoubleTapped && leftPCGDoubleTapped)
                     ? "one-syn.svg"
                     : rightMLFtapped || leftMLFTapped || rightMLFDoubleTapped || leftMLFDoubleTapped
                         ? "inter-opt.svg"
