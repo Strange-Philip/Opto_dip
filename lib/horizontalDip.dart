@@ -96,30 +96,183 @@ class _HorizontalDipState extends State<HorizontalDip> {
     });
   }
 
+  String getImage() {
+    String gaze = leftGaze
+        ? "rg"
+        : rightGaze
+            ? "lg"
+            : upGaze
+                ? "ug"
+                : downGaze
+                    ? "dg"
+                    : "ng";
+    String affectedEye = rightOccNerveTapped ||
+            rightAbducensTapped ||
+            rightDuane ||
+            rightMLFtapped ||
+            rightMLFDoubleTapped ||
+            rightPCGDoubleTapped
+        ? "-right-"
+        : leftOccNerveTapped ||
+                leftAbducensTapped ||
+                leftDuane ||
+                leftMLFTapped ||
+                leftMLFDoubleTapped ||
+                leftPCGDoubleTapped
+            ? "-left-"
+            : "-gaze.svg";
+
+    String disorder = rightOccNerveTapped || leftOccNerveTapped
+        ? "3palsy.svg"
+        : leftAbducensTapped || rightAbducensTapped
+            ? "6palsy.svg"
+            : rightDuane || leftDuane
+                ? "duan-syn.svg"
+                : (rightMLFDoubleTapped && rightMLFDoubleTapped) ||
+                        (leftMLFDoubleTapped || leftPCGDoubleTapped)
+                    ? "one-syn.svg"
+                    : rightMLFtapped || leftMLFTapped || rightMLFDoubleTapped || leftMLFDoubleTapped
+                        ? "inter-opt.svg"
+                        : "";
+
+    return downGaze
+        ? "images/dg-gaze.svg"
+        : upGaze
+            ? "images/ug-gaze.svg"
+            : "images/$gaze$affectedEye${disorder.isEmpty ? "" : disorder}";
+  }
+
+  String getDamage() {
+    return leftOccNerveTapped == true && rightOccNerveTapped == true
+        ? "Both Oculomotor Nerves Damage"
+        : rightOccNerveTapped == true
+            ? "Right Oculomotor Nerve Damage"
+            : leftOccNerveTapped == true
+                ? "Left Oculomotor Nerve Damage"
+                : (leftAbducensTapped == true && rightAbducensTapped == true) ||
+                        (leftDuane == true && rightDuane == true)
+                    ? "Both Abducens nerves Damage"
+                    : leftAbducensTapped || leftDuane == true
+                        ? "Left Abducens nerve Damage"
+                        : rightAbducensTapped || rightDuane == true
+                            ? "Right Abducens nerve Damage"
+                            : leftMLFTapped == true && rightMLFtapped == true
+                                ? "Both Medial longitudinal fasciculus Damage"
+                                : leftMLFTapped == true
+                                    ? "Left Medial longitudinal fasciculus Damage"
+                                    : rightMLFtapped == true
+                                        ? "Right Medial longitudinal fasciculus Damage"
+                                        : leftMLFDoubleTapped == true &&
+                                                leftPCGDoubleTapped == true &&
+                                                rightPCGDoubleTapped == true &&
+                                                rightMLFDoubleTapped == true
+                                            ? "Medial longitudinal fasciculus & Pontine gaze center Damage"
+                                            : leftMLFDoubleTapped == true &&
+                                                    leftPCGDoubleTapped == true
+                                                ? "Left Medial longitudinal fasciculus & Pontine gaze center Damage"
+                                                : rightMLFtapped == true &&
+                                                        rightPCGDoubleTapped == true
+                                                    ? "Right Medial longitudinal fasciculus & Pontine gaze center Damage"
+                                                    : rightPCGDoubleTapped == true
+                                                        ? "Right Pontine gaze center Damage"
+                                                        : leftPCGDoubleTapped == true
+                                                            ? "Left Pontine gaze center Damage"
+                                                            : rightMLFDoubleTapped == true
+                                                                ? "Right Medial longitudinal fasciculus Damage"
+                                                                : leftMLFDoubleTapped == true
+                                                                    ? "Left Medial longitudinal fasciculus Damage"
+                                                                    : "No Damage";
+  }
+
+  String getDisorder() {
+    return rightOccNerveTapped == true
+        ? "Name: Right CN III Palsy"
+        : leftOccNerveTapped == true
+            ? "Name: Left CN III Palsy"
+            : rightAbducensTapped == true
+                ? "Name: Right Sixth Nerve Palsy"
+                : leftAbducensTapped == true
+                    ? "Name: Left Sixth Nerve Palsy"
+                    : rightMLFtapped == true
+                        ? "Name: Right Internuclear Ophthalmoplegia"
+                        : leftMLFTapped == true
+                            ? "Name: Left Internuclear Ophthalmoplegia"
+                            : rightDuane == true
+                                ? "Name: Right Duane’s syndrome"
+                                : leftDuane == true
+                                    ? "Name: Left Duane’s syndrome"
+                                    : rightMLFDoubleTapped == true && rightPCGDoubleTapped
+                                        ? "Name: Right One and half syndrome"
+                                        : leftMLFDoubleTapped == true && leftPCGDoubleTapped
+                                            ? "Name: Left One and half syndrome"
+                                            : "No disorder";
+  }
+
+  String getSigns() {
+    return rightOccNerveTapped == true || leftOccNerveTapped == true
+        ? "Signs: Defective superior rectus, inferior rectus, inferior oblique, ptosis, mydriasis"
+        : leftAbducensTapped == true || rightAbducensTapped == true
+            ? "Signs: Impaired abduction in affected eye, esotropia"
+            : rightMLFtapped == true ||
+                    leftMLFTapped == true ||
+                    rightMLFDoubleTapped == true ||
+                    leftMLFDoubleTapped == true
+                ? "Signs: Impaired adduction in affected eye "
+                : rightDuane == true || leftDuane == true
+                    ? "Signs:  Limited abduction in affected eye, retraction of eyeball into eye socket on adduction, poor convergence, head tilt "
+                    : (rightMLFDoubleTapped == true || leftMLFDoubleTapped == true) &&
+                            (rightPCGDoubleTapped == true || leftPCGDoubleTapped)
+                        ? "Signs: Impaired abduction in one eye, other eye constantly moves out  "
+                        : "";
+  }
+
+  String getSymptons() {
+    return rightOccNerveTapped == true || leftOccNerveTapped == true
+        ? "Symptoms: Vertical diplopia, pain, vision loss due to ptosis "
+        : leftAbducensTapped == true || rightAbducensTapped == true
+            ? "Symptoms: Horizontal diplopia worse in distance "
+            : rightMLFtapped == true ||
+                    leftMLFTapped == true ||
+                    rightMLFDoubleTapped == true ||
+                    leftMLFDoubleTapped == true
+                ? "Symptoms: Horizontal diplopia, nystagmus "
+                : leftDuane == true || rightDuane == true
+                    ? "Symptoms: Horizontal diplopia  "
+                    : (rightMLFDoubleTapped == true || leftMLFDoubleTapped == true) &&
+                            (rightPCGDoubleTapped == true || leftPCGDoubleTapped)
+                        ? "Symptoms: Horizontal diplopia, nystagmus  "
+                        : "";
+  }
+
+  String getCauses() {
+    return rightOccNerveTapped == true || leftOccNerveTapped == true
+        ? "Cause of lesion: Trauma,ataxia, aneurysm, idiopathic "
+        : leftAbducensTapped == true || rightAbducensTapped == true
+            ? "Cause of lesion: Tumors, trauma, stroke, idiopathic"
+            : rightMLFtapped == true ||
+                    leftMLFTapped == true ||
+                    rightMLFDoubleTapped == true ||
+                    leftMLFDoubleTapped == true
+                ? "Cause of lesion: Multiple sclerosis, stroke"
+                : leftDuane == true || rightDuane == true
+                    ? "Cause of lesion: Abducens nerve hypoplasia or absence  "
+                    : (rightMLFDoubleTapped == true || leftMLFDoubleTapped == true) &&
+                            (rightPCGDoubleTapped == true || leftPCGDoubleTapped)
+                        ? "Cause of lesion: Multiple sclerosis, infarction, trauma, pontine hemorrhage "
+                        : "";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 100, left: 20, right: 20),
         child: Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Column(
               children: [
                 Text(
-                  leftOccNerveTapped == true && rightOccNerveTapped == true
-                      ? "Both Oculomotor Nerves Damage"
-                      : rightOccNerveTapped == true
-                          ? "Right Oculomotor Nerve Damage"
-                          : leftOccNerveTapped == true
-                              ? "Left Oculomotor Nerve Damage"
-                              : leftAbducensTapped == true && rightAbducensTapped == true
-                                  ? "Both Abducens nerves Damage"
-                                  : leftAbducensTapped == true
-                                      ? "Left Abducens nerve Damage"
-                                      : rightAbducensTapped == true
-                                          ? "Right Abducens nerve Damage"
-                                          : "No Damage",
+                  getDamage(),
                   style: const TextStyle(color: Colors.red, fontSize: 16),
                 ),
                 const SizedBox(
@@ -607,39 +760,23 @@ class _HorizontalDipState extends State<HorizontalDip> {
                 children: [
                   const Text(
                     "Results",
-                    style: TextStyle(color: Color(0xff000000), fontSize: 30),
+                    style: TextStyle(color: Color(0xff000000), fontSize: 28),
                   ),
                   Text(
-                    rightOccNerveTapped == true && leftOccNerveTapped == false
-                        ? "Name: Right CN III Palsy"
-                        : rightOccNerveTapped == false && leftOccNerveTapped == true
-                            ? "Name: Left CN III Palsy"
-                            : rightOccNerveTapped == true && leftOccNerveTapped == true
-                                ? "Name: CN III Palsy on Both Eyes"
-                                : rightAbducensTapped == true && leftAbducensTapped == false
-                                    ? "Name: Right Sixth Nerve Palsy"
-                                    : rightAbducensTapped == false && leftAbducensTapped == true
-                                        ? "Name: Left Sixth Nerve Palsy"
-                                        : rightAbducensTapped == true && leftAbducensTapped == true
-                                            ? "Name: Sixth Nerve Palsy on Both Eyes"
-                                            : "Normal",
-                    style: const TextStyle(color: Color(0xff000000), fontSize: 24),
+                    getDisorder(),
+                    style: const TextStyle(color: Color(0xff000000), fontSize: 22),
                   ),
                   Text(
-                    rightOccNerveTapped == true || leftOccNerveTapped == true
-                        ? "Signs: Defective superior rectus, inferior rectus, inferior oblique, ptosis, mydriasis"
-                        : leftAbducensTapped == true || rightAbducensTapped == true
-                            ? "Signs: Impaired abduction in affected eye, esotropia  "
-                            : "",
-                    style: const TextStyle(color: Color(0xff000000), fontSize: 24),
+                    getSigns(),
+                    style: const TextStyle(color: Color(0xff000000), fontSize: 22),
                   ),
                   Text(
-                    rightOccNerveTapped == true || leftOccNerveTapped == true
-                        ? "Symptoms: Vertical diplopia, pain, vision loss due to ptosis \nCause of lesion: Trauma,ataxia, aneurysm"
-                        : leftAbducensTapped == true || rightAbducensTapped == true
-                            ? "Symptoms: Horizontal diplopia worse in distance \nCause of lesion: Tumors, trauma, stroke, idiopathic"
-                            : "",
-                    style: const TextStyle(color: Color(0xff000000), fontSize: 24),
+                    getSymptons(),
+                    style: const TextStyle(color: Color(0xff000000), fontSize: 22),
+                  ),
+                  Text(
+                    getCauses(),
+                    style: const TextStyle(color: Color(0xff000000), fontSize: 22),
                   ),
                   Center(
                     child: Listener(
@@ -661,15 +798,7 @@ class _HorizontalDipState extends State<HorizontalDip> {
                             color: Colors.lightBlue,
                           )),
                           child: SvgPicture.asset(
-                            rightOccNerveTapped == true && leftOccNerveTapped == false
-                                ? "images/${leftGaze ? "rg" : rightGaze ? "lg" : "ng"}-right-3palsy.svg"
-                                : rightOccNerveTapped == false && leftOccNerveTapped == true
-                                    ? "images/${leftGaze ? "rg" : rightGaze ? "lg" : "ng"}-left-3palsy.svg"
-                                    : rightAbducensTapped == true && leftAbducensTapped == false
-                                        ? "images/${leftGaze ? "rg" : rightGaze ? "lg" : "ng"}-right-6palsy.svg"
-                                        : rightAbducensTapped == false && leftAbducensTapped == true
-                                            ? "images/${leftGaze ? "rg" : rightGaze ? "lg" : "ng"}-left-6palsy.svg"
-                                            : 'images/${leftGaze ? "right" : rightGaze ? "left" : upGaze ? "up" : downGaze ? "down" : "normal"}-gaze.svg',
+                            getImage(),
                             width: 100,
                             height: 100,
                           ),
@@ -679,7 +808,7 @@ class _HorizontalDipState extends State<HorizontalDip> {
                   ),
                   Center(
                     child: Text(
-                      "$directionText gaze${rightOccNerveTapped == true && leftOccNerveTapped == false ? " with Right CN III Palsy" : rightOccNerveTapped == false && leftOccNerveTapped == true ? " with Left CN III Palsy" : rightOccNerveTapped == true && leftOccNerveTapped == true ? " with CN III Palsy on Both Eyes" : rightAbducensTapped == true && leftAbducensTapped == false ? " with Right CN VI Palsy" : rightAbducensTapped == false && leftAbducensTapped == true ? " with Left CN VI Palsy" : rightAbducensTapped == true && leftAbducensTapped == true ? " with CN VI Palsy on Both Eyes" : ""}",
+                      "$directionText gaze with ${getDisorder().replaceFirst("Name: ", "").replaceFirst("No disorder", "No Damage")}",
                       style: const TextStyle(color: Color(0xff000000), fontSize: 16),
                     ),
                   ),

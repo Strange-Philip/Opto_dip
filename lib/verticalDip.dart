@@ -20,6 +20,66 @@ class _VerticalDipState extends State<VerticalDip> {
   bool tectumTapped = false;
   bool normalGaze = true;
   String directionText = 'Center';
+  void setToFalse({required String parameter, String? exception}) {
+    setState(() {
+      rightTrochlearNerveTapped = exception.toString() == "rightTrochlearNerveTapped"
+          ? rightTrochlearNerveTapped
+          : parameter.toString() == "rightTrochlearNerveTapped"
+              ? !rightTrochlearNerveTapped
+              : false;
+      leftTrochlearNerveTapped = exception.toString() == "leftTrochlearNerveTapped"
+          ? leftTrochlearNerveTapped
+          : parameter.toString() == "leftTrochlearNerveTapped"
+              ? !leftTrochlearNerveTapped
+              : false;
+      tectumTapped = exception.toString() == "tectumTapped"
+          ? tectumTapped
+          : parameter.toString() == "tectumTapped"
+              ? !tectumTapped
+              : false;
+
+      leftOccNerveTapped = exception.toString() == "leftOccNerveTapped"
+          ? leftOccNerveTapped
+          : parameter.toString() == "leftOccNerveTapped"
+              ? !leftOccNerveTapped
+              : false;
+      rightOccNerveTapped = exception.toString() == "rightOccNerveTapped"
+          ? rightOccNerveTapped
+          : parameter.toString() == "rightOccNerveTapped"
+              ? !rightOccNerveTapped
+              : false;
+    });
+  }
+
+  String getImage() {
+    String gaze = leftGaze
+        ? "rg"
+        : rightGaze
+            ? "lg"
+            : upGaze
+                ? "ug"
+                : downGaze
+                    ? "dg"
+                    : "ng";
+    String affectedEye = rightOccNerveTapped || rightTrochlearNerveTapped
+        ? "-right-"
+        : leftOccNerveTapped || leftTrochlearNerveTapped
+            ? "-left-"
+            : tectumTapped
+                ? "-"
+                : "-gaze.svg";
+
+    String disorder = rightOccNerveTapped || leftOccNerveTapped
+        ? "3palsy.svg"
+        : leftTrochlearNerveTapped || rightTrochlearNerveTapped
+            ? "Tpalsy.svg"
+            : tectumTapped
+                ? "psp.svg"
+                : "";
+    print("images/$gaze$affectedEye${disorder.isEmpty ? "" : disorder}");
+
+    return "images/$gaze$affectedEye${disorder.isEmpty ? "" : disorder}";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,12 +127,7 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightOccNerveTapped = !rightOccNerveTapped;
-                              leftTrochlearNerveTapped = false;
-                              rightTrochlearNerveTapped = false;
-                              tectumTapped = false;
-                            });
+                            setToFalse(parameter: "rightOccNerveTapped");
                             debugPrint('Right occulomotor nerve tapped');
                           },
                           child: Container(
@@ -93,12 +148,7 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightOccNerveTapped = !rightOccNerveTapped;
-                              leftTrochlearNerveTapped = false;
-                              rightTrochlearNerveTapped = false;
-                              tectumTapped = false;
-                            });
+                            setToFalse(parameter: "rightOccNerveTapped");
                             debugPrint('Right occulomotor nerve tapped');
                           },
                           child: Container(
@@ -119,12 +169,7 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftOccNerveTapped = !leftOccNerveTapped;
-                              leftTrochlearNerveTapped = false;
-                              rightTrochlearNerveTapped = false;
-                              tectumTapped = false;
-                            });
+                            setToFalse(parameter: "leftOccNerveTapped");
                             debugPrint('Left occulomotor nerve tapped');
                           },
                           child: Container(
@@ -145,12 +190,7 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftOccNerveTapped = !leftOccNerveTapped;
-                              leftTrochlearNerveTapped = false;
-                              rightTrochlearNerveTapped = false;
-                              tectumTapped = false;
-                            });
+                            setToFalse(parameter: "leftOccNerveTapped");
                             debugPrint('Left occulomotor nerve tapped');
                           },
                           child: Container(
@@ -171,12 +211,7 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightOccNerveTapped = !rightOccNerveTapped;
-                              leftTrochlearNerveTapped = false;
-                              rightTrochlearNerveTapped = false;
-                              tectumTapped = false;
-                            });
+                            setToFalse(parameter: "rightOccNerveTapped");
                             debugPrint('Right occulomotor nerve tapped');
                           },
                           child: Container(
@@ -196,12 +231,7 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftOccNerveTapped = !leftOccNerveTapped;
-                              leftTrochlearNerveTapped = false;
-                              rightTrochlearNerveTapped = false;
-                              tectumTapped = false;
-                            });
+                            setToFalse(parameter: "leftOccNerveTapped");
                             debugPrint('Left occulomotor nerve tapped');
                           },
                           child: Container(
@@ -221,12 +251,7 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftTrochlearNerveTapped = !leftTrochlearNerveTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                              tectumTapped = false;
-                            });
+                            setToFalse(parameter: "leftTrochlearNerveTapped");
                             debugPrint('Left Trochlear nerve tapped');
                           },
                           child: Container(
@@ -251,13 +276,9 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftTrochlearNerveTapped = !leftTrochlearNerveTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                              tectumTapped = false;
-                            });
-                            debugPrint('Left Abducens nerve tapped');
+                            setToFalse(parameter: "leftTrochlearNerveTapped");
+
+                            debugPrint('Left Trochlear nerve tapped');
                           },
                           child: Container(
                             width: 135,
@@ -277,13 +298,8 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              leftTrochlearNerveTapped = !leftTrochlearNerveTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                              tectumTapped = false;
-                            });
-                            debugPrint('Left Abducens nerve tapped');
+                            setToFalse(parameter: "leftTrochlearNerveTapped");
+                            debugPrint('Left Trochlear nerve tapped');
                           },
                           child: Container(
                             width: 8,
@@ -303,13 +319,8 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightTrochlearNerveTapped = !rightTrochlearNerveTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                              tectumTapped = false;
-                            });
-                            debugPrint('Right Abducens nerve tapped');
+                            setToFalse(parameter: "rightTrochlearNerveTapped");
+                            debugPrint('Right Trochlear nerve tapped');
                           },
                           child: Container(
                             width: 8,
@@ -329,13 +340,8 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightTrochlearNerveTapped = !rightTrochlearNerveTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                              tectumTapped = false;
-                            });
-                            debugPrint('Right Abducens nerve tapped');
+                            setToFalse(parameter: "rightTrochlearNerveTapped");
+                            debugPrint('Right Trochlear nerve tapped');
                           },
                           child: Container(
                             width: 30,
@@ -359,13 +365,8 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              rightTrochlearNerveTapped = !rightTrochlearNerveTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                              tectumTapped = false;
-                            });
-                            debugPrint('Right Abducens nerve tapped');
+                            setToFalse(parameter: "rightTrochlearNerveTapped");
+                            debugPrint('Right Trochlear nerve tapped');
                           },
                           child: Container(
                             width: 120,
@@ -384,13 +385,7 @@ class _VerticalDipState extends State<VerticalDip> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            setState(() {
-                              tectumTapped = !tectumTapped;
-                              leftOccNerveTapped = false;
-                              rightOccNerveTapped = false;
-                              leftTrochlearNerveTapped = false;
-                              rightTrochlearNerveTapped = false;
-                            });
+                            setToFalse(parameter: "tectumTapped");
                             debugPrint('Tectum tapped');
                           },
                           child: Container(
@@ -485,19 +480,7 @@ class _VerticalDipState extends State<VerticalDip> {
                             color: Colors.lightBlue,
                           )),
                           child: SvgPicture.asset(
-                            rightOccNerveTapped == true && leftOccNerveTapped == false
-                                ? "images/${leftGaze ? "rg" : rightGaze ? "lg" : upGaze ? "ug" : downGaze ? "dg" : "ng"}-right-3palsy.svg"
-                                : rightOccNerveTapped == false && leftOccNerveTapped == true
-                                    ? "images/${leftGaze ? "rg" : rightGaze ? "lg" : upGaze ? "ug" : downGaze ? "dg" : "ng"}-left-3palsy.svg"
-                                    : rightTrochlearNerveTapped == true &&
-                                            leftTrochlearNerveTapped == false
-                                        ? "images/${leftGaze ? "lg" : rightGaze ? "rg" : upGaze ? "ug" : downGaze ? "dg" : "ng"}-right-Tpalsy.svg"
-                                        : rightTrochlearNerveTapped == false &&
-                                                leftTrochlearNerveTapped == true
-                                            ? "images/${leftGaze ? "lg" : rightGaze ? "rg" : upGaze ? "ug" : downGaze ? "dg" : "ng"}-left-Tpalsy.svg"
-                                            : tectumTapped == true
-                                                ? "images/${leftGaze ? "rg" : rightGaze ? "lg" : upGaze ? "ug" : downGaze ? "dg" : "ng"}-psp.svg"
-                                                : 'images/${leftGaze ? "right" : rightGaze ? "left" : upGaze ? "up" : downGaze ? "down" : "normal"}-gaze.svg',
+                            getImage(),
                             width: 100,
                             height: 100,
                           ),
