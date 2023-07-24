@@ -11,43 +11,128 @@ class VerticalDip extends StatefulWidget {
 class _VerticalDipState extends State<VerticalDip> {
   bool rightOccNerveTapped = false;
   bool leftOccNerveTapped = false;
+  bool rightOccNerveDoubleTapped = false;
+  bool leftOccNerveDoubleTapped = false;
   bool rightTrochlearNerveTapped = false;
   bool leftTrochlearNerveTapped = false;
+  bool rightTrochlearNerveDoubleTapped = false;
+  bool leftTrochlearNerveDoubleTapped = false;
+  bool rightPCGDoubleTapped = false;
+  bool leftPCGDoubleTapped = false;
   bool leftGaze = false;
   bool rightGaze = false;
   bool upGaze = false;
   bool downGaze = false;
   bool tectumTapped = false;
+  bool tectumDoubleTapped = false;
+  bool rightRimlfTapped = false;
+  bool leftRimlfTapped = false;
   bool normalGaze = true;
   String directionText = 'Center';
-  void setToFalse({required String parameter, String? exception}) {
+  void setToFalse({
+    required String parameter,
+    List<String>? exception,
+  }) {
     setState(() {
-      rightTrochlearNerveTapped = exception.toString() == "rightTrochlearNerveTapped"
-          ? rightTrochlearNerveTapped
-          : parameter.toString() == "rightTrochlearNerveTapped"
-              ? !rightTrochlearNerveTapped
-              : false;
-      leftTrochlearNerveTapped = exception.toString() == "leftTrochlearNerveTapped"
-          ? leftTrochlearNerveTapped
-          : parameter.toString() == "leftTrochlearNerveTapped"
-              ? !leftTrochlearNerveTapped
-              : false;
-      tectumTapped = exception.toString() == "tectumTapped"
-          ? tectumTapped
-          : parameter.toString() == "tectumTapped"
-              ? !tectumTapped
-              : false;
+      rightTrochlearNerveTapped = parameter.toString() == "rightTrochlearNerveTapped"
+          ? !rightTrochlearNerveTapped
+          : exception == null
+              ? false
+              : exception.contains("rightTrochlearNerveTapped")
+                  ? rightTrochlearNerveTapped
+                  : false;
+      leftTrochlearNerveTapped = parameter.toString() == "leftTrochlearNerveTapped"
+          ? !leftTrochlearNerveTapped
+          : exception == null
+              ? false
+              : exception.contains("leftTrochlearNerveTapped")
+                  ? leftTrochlearNerveTapped
+                  : false;
+      tectumTapped = parameter.toString() == "tectumTapped"
+          ? !tectumTapped
+          : exception == null
+              ? false
+              : exception.contains("tectumTapped")
+                  ? tectumTapped
+                  : false;
+      tectumDoubleTapped = parameter.toString() == "tectumDoubleTapped"
+          ? !tectumDoubleTapped
+          : exception == null
+              ? false
+              : exception.contains("tectumDoubleTapped")
+                  ? tectumDoubleTapped
+                  : false;
 
-      leftOccNerveTapped = exception.toString() == "leftOccNerveTapped"
-          ? leftOccNerveTapped
-          : parameter.toString() == "leftOccNerveTapped"
-              ? !leftOccNerveTapped
-              : false;
-      rightOccNerveTapped = exception.toString() == "rightOccNerveTapped"
-          ? rightOccNerveTapped
-          : parameter.toString() == "rightOccNerveTapped"
-              ? !rightOccNerveTapped
-              : false;
+      leftOccNerveTapped = parameter.toString() == "leftOccNerveTapped"
+          ? !leftOccNerveTapped
+          : exception == null
+              ? false
+              : exception.contains("leftOccNerveTapped")
+                  ? leftOccNerveTapped
+                  : false;
+      rightOccNerveTapped = parameter.toString() == "rightOccNerveTapped"
+          ? !rightOccNerveTapped
+          : exception == null
+              ? false
+              : exception.contains("rightOccNerveTapped")
+                  ? rightOccNerveTapped
+                  : false;
+      leftRimlfTapped = parameter.toString() == "leftRimlfTapped"
+          ? !leftRimlfTapped
+          : exception == null
+              ? false
+              : exception.contains("leftRimlfTapped")
+                  ? leftRimlfTapped
+                  : false;
+      rightRimlfTapped = parameter.toString() == "rightRimlfTapped"
+          ? !rightRimlfTapped
+          : exception == null
+              ? false
+              : exception.contains("rightRimlfTapped")
+                  ? rightRimlfTapped
+                  : false;
+      leftPCGDoubleTapped = parameter.toString() == "leftPCGDoubleTapped"
+          ? !leftPCGDoubleTapped
+          : exception == null
+              ? false
+              : exception.contains("leftPCGDoubleTapped")
+                  ? leftPCGDoubleTapped
+                  : false;
+      rightPCGDoubleTapped = parameter.toString() == "rightPCGDoubleTapped"
+          ? !rightPCGDoubleTapped
+          : exception == null
+              ? false
+              : exception.contains("rightPCGDoubleTapped")
+                  ? rightPCGDoubleTapped
+                  : false;
+      leftTrochlearNerveDoubleTapped = parameter.toString() == "leftTrochlearNerveDoubleTapped"
+          ? !leftTrochlearNerveDoubleTapped
+          : exception == null
+              ? false
+              : exception.contains("leftTrochlearNerveDoubleTapped")
+                  ? leftTrochlearNerveDoubleTapped
+                  : false;
+      rightTrochlearNerveDoubleTapped = parameter.toString() == "rightTrochlearNerveDoubleTapped"
+          ? !rightTrochlearNerveDoubleTapped
+          : exception == null
+              ? false
+              : exception.contains("rightTrochlearNerveDoubleTapped")
+                  ? rightTrochlearNerveDoubleTapped
+                  : false;
+      rightOccNerveDoubleTapped = parameter.toString() == "rightOccNerveDoubleTapped"
+          ? !rightOccNerveDoubleTapped
+          : exception == null
+              ? false
+              : exception.contains("rightOccNerveDoubleTapped")
+                  ? rightOccNerveDoubleTapped
+                  : false;
+      leftOccNerveDoubleTapped = parameter.toString() == "leftOccNerveDoubleTapped"
+          ? !leftOccNerveDoubleTapped
+          : exception == null
+              ? false
+              : exception.contains("leftOccNerveDoubleTapped")
+                  ? leftOccNerveDoubleTapped
+                  : false;
     });
   }
 
@@ -61,13 +146,25 @@ class _VerticalDipState extends State<VerticalDip> {
                 : downGaze
                     ? "dg"
                     : "ng";
-    String affectedEye = rightOccNerveTapped || rightTrochlearNerveTapped
+    String affectedEye = rightOccNerveTapped ||
+            rightTrochlearNerveTapped ||
+            rightOccNerveDoubleTapped ||
+            rightTrochlearNerveDoubleTapped ||
+            rightRimlfTapped ||
+            rightPCGDoubleTapped
         ? "-right-"
-        : leftOccNerveTapped || leftTrochlearNerveTapped
+        : leftOccNerveTapped ||
+                leftTrochlearNerveTapped ||
+                leftOccNerveDoubleTapped ||
+                leftTrochlearNerveDoubleTapped ||
+                leftRimlfTapped ||
+                leftPCGDoubleTapped
             ? "-left-"
             : tectumTapped
                 ? "-"
-                : "-gaze.svg";
+                : getDisorder() == "Normal"
+                    ? "-gaze.svg"
+                    : "-gaze.svg";
 
     String disorder = rightOccNerveTapped || leftOccNerveTapped
         ? "3palsy.svg"
@@ -75,10 +172,162 @@ class _VerticalDipState extends State<VerticalDip> {
             ? "Tpalsy.svg"
             : tectumTapped
                 ? "psp.svg"
-                : "";
+                : (tectumDoubleTapped &&
+                            rightOccNerveDoubleTapped &&
+                            rightTrochlearNerveDoubleTapped) ||
+                        (tectumDoubleTapped &&
+                            leftOccNerveDoubleTapped &&
+                            leftTrochlearNerveDoubleTapped)
+                    ? "sk-dive.svg"
+                    : (rightTrochlearNerveDoubleTapped && rightPCGDoubleTapped) ||
+                            (leftTrochlearNerveDoubleTapped && leftPCGDoubleTapped)
+                        ? "w-syn.svg"
+                        : rightRimlfTapped || leftRimlfTapped
+                            ? "dsyn.svg"
+                            : getDisorder() == "Normal"
+                                ? ""
+                                : "";
     print("images/$gaze$affectedEye${disorder.isEmpty ? "" : disorder}");
 
     return "images/$gaze$affectedEye${disorder.isEmpty ? "" : disorder}";
+  }
+
+  String getDamage() {
+    return leftOccNerveTapped == true && rightOccNerveTapped == true
+        ? "Both Oculomotor Nerves Damage"
+        : rightOccNerveTapped == true
+            ? "Right Oculomotor Nerve Damage"
+            : leftOccNerveTapped == true
+                ? "Left Oculomotor Nerve Damage"
+                : leftTrochlearNerveTapped == true && rightTrochlearNerveTapped == true
+                    ? "Both Trochlear Nerves Damage"
+                    : rightTrochlearNerveTapped == true
+                        ? "Right Trochlear Nerve Damage"
+                        : leftTrochlearNerveTapped == true
+                            ? "Left Trochlear Nerve Damage"
+                            : tectumTapped == true
+                                ? "Tectum Damage"
+                                : rightRimlfTapped == true
+                                    ? "Right Rostral interstitial medial longitudinal fasciculus Damage"
+                                    : leftRimlfTapped == true
+                                        ? "Left Rostral interstitial medial longitudinal fasciculus Damage"
+                                        : tectumDoubleTapped &&
+                                                rightOccNerveDoubleTapped &&
+                                                rightTrochlearNerveDoubleTapped
+                                            ? "Right Pre nuclear vestibular input Damage"
+                                            : tectumDoubleTapped &&
+                                                    leftOccNerveDoubleTapped &&
+                                                    leftTrochlearNerveDoubleTapped
+                                                ? "Left Pre nuclear vestibular input Damage"
+                                                : rightTrochlearNerveDoubleTapped &&
+                                                        rightPCGDoubleTapped
+                                                    ? "Right lateral medulla Damage"
+                                                    : leftTrochlearNerveDoubleTapped &&
+                                                            leftPCGDoubleTapped
+                                                        ? "Left lateral medulla Damage"
+                                                        : "No Damage";
+  }
+
+  String getDisorder() {
+    return rightOccNerveTapped == true && leftOccNerveTapped == false
+        ? "Name: Right CN III Palsy"
+        : rightOccNerveTapped == false && leftOccNerveTapped == true
+            ? "Name: Left CN III Palsy"
+            : rightOccNerveTapped == true && leftOccNerveTapped == true
+                ? "Name: CN III Palsy on Both Eyes"
+                : rightTrochlearNerveTapped == true && leftTrochlearNerveTapped == false
+                    ? "Name: Right Trochlear Nerve Palsy"
+                    : rightTrochlearNerveTapped == false && leftTrochlearNerveTapped == true
+                        ? "Name: Left Trochlear Nerve Palsy"
+                        : rightTrochlearNerveTapped == true && leftTrochlearNerveTapped == true
+                            ? "Name: Trochlear Nerve Palsy on Both Eyes"
+                            : tectumTapped == true
+                                ? "Name: Progressive Supranuclear Palsy"
+                                : leftRimlfTapped
+                                    ? "Name: Left Dorsal Midbrain Syndrome"
+                                    : rightRimlfTapped
+                                        ? "Name: Right Dorsal Midbrain Syndrome"
+                                        : tectumDoubleTapped &&
+                                                rightOccNerveDoubleTapped &&
+                                                rightTrochlearNerveDoubleTapped
+                                            ? "Name: Right Skew deviation"
+                                            : tectumDoubleTapped &&
+                                                    leftOccNerveDoubleTapped &&
+                                                    leftTrochlearNerveDoubleTapped
+                                                ? "Name:Left Skew deviation"
+                                                : rightTrochlearNerveDoubleTapped &&
+                                                        rightPCGDoubleTapped
+                                                    ? "Name: Right Wallenberg syndrome"
+                                                    : leftTrochlearNerveDoubleTapped &&
+                                                            leftPCGDoubleTapped
+                                                        ? "Name: Left Wallenberg syndrome"
+                                                        : "Normal";
+  }
+
+  String getSigns() {
+    return rightOccNerveTapped == true || leftOccNerveTapped == true
+        ? "Signs: Defective vertical gaze worse with downgaze "
+        : rightTrochlearNerveTapped == true || leftTrochlearNerveTapped == true
+            ? "Signs: Defective superior oblique, head tilt, hypertropia"
+            : tectumTapped == true
+                ? "Signs: Defective vertical gaze worse with downgaze, poor lid function, convergence insufficiency"
+                : rightRimlfTapped || leftRimlfTapped
+                    ? "Signs: Upgaze palsy, convergence insufficiency, papilledema"
+                    : (tectumDoubleTapped &&
+                                rightOccNerveDoubleTapped &&
+                                rightTrochlearNerveDoubleTapped) ||
+                            (tectumDoubleTapped &&
+                                leftOccNerveDoubleTapped &&
+                                leftTrochlearNerveDoubleTapped)
+                        ? "Signs: Vertical gaze deficit, Nystagmus, Visual field defects"
+                        : (rightTrochlearNerveDoubleTapped && rightPCGDoubleTapped) ||
+                                (leftTrochlearNerveDoubleTapped && leftPCGDoubleTapped)
+                            ? "Signs: Vertical gaze deficit, Nystagmus, Visual field defects"
+                            : "";
+  }
+
+  String getSymptons() {
+    return rightOccNerveTapped == true || leftOccNerveTapped == true
+        ? "Symptoms: Vertical diplopia, pain, vision loss due to ptosis  "
+        : rightTrochlearNerveTapped == true || leftTrochlearNerveTapped == true
+            ? "Symptoms: Vertical diplopia, pain "
+            : tectumTapped == true
+                ? "Symptoms: Vertical diplopia, imbalance, slow movements "
+                : rightRimlfTapped || leftRimlfTapped
+                    ? "Symptoms: Vertical diplopia, blurry vision,nausea"
+                    : (tectumDoubleTapped &&
+                                rightOccNerveDoubleTapped &&
+                                rightTrochlearNerveDoubleTapped) ||
+                            (tectumDoubleTapped &&
+                                leftOccNerveDoubleTapped &&
+                                leftTrochlearNerveDoubleTapped)
+                        ? "Symptoms: Vertical diplopia, blurry vision, imbalance, nausea, facial weakness "
+                        : (rightTrochlearNerveDoubleTapped && rightPCGDoubleTapped) ||
+                                (leftTrochlearNerveDoubleTapped && leftPCGDoubleTapped)
+                            ? "Symptoms: Vertical diplopia, blurry vision, imbalance, nausea, facial weakness "
+                            : "";
+  }
+
+  String getCauses() {
+    return rightOccNerveTapped == true || leftOccNerveTapped == true
+        ? "Cause of lesion: Trauma,ataxia, aneurysm "
+        : rightTrochlearNerveTapped == true || leftTrochlearNerveTapped == true
+            ? "Cause of lesion: Trauma, vascular anomalies in diabetes, increased intracranial pressure "
+            : tectumTapped == true
+                ? "Cause of lesion: Gradual deterioration and death of specific volumes of brain esp . tectum "
+                : rightRimlfTapped || leftRimlfTapped
+                    ? "Causes of lesion: Damage to dorsal midbrain, injury to rostral interstitial nucleus of the medial longitudinal fasciculus"
+                    : (tectumDoubleTapped &&
+                                rightOccNerveDoubleTapped &&
+                                rightTrochlearNerveDoubleTapped) ||
+                            (tectumDoubleTapped &&
+                                leftOccNerveDoubleTapped &&
+                                leftTrochlearNerveDoubleTapped)
+                        ? "Causes of lesion: Damage to the brainstem, cerebellar region, stroke, abscess and inflammation"
+                        : (rightTrochlearNerveDoubleTapped && rightPCGDoubleTapped) ||
+                                (leftTrochlearNerveDoubleTapped && leftPCGDoubleTapped)
+                            ? "Causes of lesion: Damage to the brainstem, cerebellar region, stroke, abscess and inflammation"
+                            : "";
   }
 
   @override
@@ -92,22 +341,7 @@ class _VerticalDipState extends State<VerticalDip> {
             Column(
               children: [
                 Text(
-                  leftOccNerveTapped == true && rightOccNerveTapped == true
-                      ? "Both Oculomotor Nerves Damage"
-                      : rightOccNerveTapped == true
-                          ? "Right Oculomotor Nerve Damage"
-                          : leftOccNerveTapped == true
-                              ? "Left Oculomotor Nerve Damage"
-                              : leftTrochlearNerveTapped == true &&
-                                      rightTrochlearNerveTapped == true
-                                  ? "Both Trochlear Nerves Damage"
-                                  : rightTrochlearNerveTapped == true
-                                      ? "Right Trochlear Nerve Damage"
-                                      : leftTrochlearNerveTapped == true
-                                          ? "Left Trochlear Nerve Damage"
-                                          : tectumTapped == true
-                                              ? "Tectum Damage"
-                                              : "No Damage",
+                  getDamage(),
                   style: const TextStyle(color: Colors.red, fontSize: 16),
                 ),
                 const SizedBox(
@@ -130,11 +364,22 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "rightOccNerveTapped");
                             debugPrint('Right occulomotor nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(parameter: "rightOccNerveDoubleTapped", exception: [
+                              "tectumDoubleTapped",
+                              "rightTrochlearNerveDoubleTapped"
+                            ]);
+                            debugPrint('Right occulomotor nerve double tapped');
+                          },
                           child: Container(
                             width: 10,
                             height: 200,
                             decoration: BoxDecoration(
-                              color: rightOccNerveTapped ? Colors.red : Colors.transparent,
+                              color: rightOccNerveDoubleTapped
+                                  ? Colors.red[800]
+                                  : rightOccNerveTapped
+                                      ? Colors.red
+                                      : Colors.transparent,
                               borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(6)),
                             ),
                           ),
@@ -151,11 +396,22 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "rightOccNerveTapped");
                             debugPrint('Right occulomotor nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(parameter: "rightOccNerveDoubleTapped", exception: [
+                              "tectumDoubleTapped",
+                              "rightTrochlearNerveDoubleTapped"
+                            ]);
+                            debugPrint('Right occulomotor nerve double tapped');
+                          },
                           child: Container(
                             width: 88,
                             height: 10,
                             decoration: BoxDecoration(
-                                color: rightOccNerveTapped ? Colors.red : Colors.transparent,
+                                color: rightOccNerveDoubleTapped
+                                    ? Colors.red[800]
+                                    : rightOccNerveTapped
+                                        ? Colors.red
+                                        : Colors.transparent,
                                 borderRadius:
                                     const BorderRadius.only(bottomLeft: Radius.circular(10))),
                           ),
@@ -172,11 +428,22 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "leftOccNerveTapped");
                             debugPrint('Left occulomotor nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(parameter: "leftOccNerveDoubleTapped", exception: [
+                              "tectumDoubleTapped",
+                              "leftTrochlearNerveDoubleTapped"
+                            ]);
+                            debugPrint('Left occulomotor nerve double tapped');
+                          },
                           child: Container(
                             width: 88,
                             height: 10,
                             decoration: BoxDecoration(
-                                color: leftOccNerveTapped ? Colors.red : Colors.transparent,
+                                color: leftOccNerveDoubleTapped
+                                    ? Colors.red[800]
+                                    : leftOccNerveTapped
+                                        ? Colors.red
+                                        : Colors.transparent,
                                 borderRadius:
                                     const BorderRadius.only(bottomRight: Radius.circular(10))),
                           ),
@@ -193,11 +460,22 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "leftOccNerveTapped");
                             debugPrint('Left occulomotor nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(parameter: "leftOccNerveDoubleTapped", exception: [
+                              "tectumDoubleTapped",
+                              "leftTrochlearNerveDoubleTapped"
+                            ]);
+                            debugPrint('Left occulomotor nerve double tapped');
+                          },
                           child: Container(
                             width: 10,
                             height: 200,
                             decoration: BoxDecoration(
-                                color: leftOccNerveTapped ? Colors.red : Colors.transparent,
+                                color: leftOccNerveDoubleTapped
+                                    ? Colors.red[800]
+                                    : leftOccNerveTapped
+                                        ? Colors.red
+                                        : Colors.transparent,
                                 borderRadius:
                                     const BorderRadius.only(bottomRight: Radius.circular(6))),
                           ),
@@ -214,11 +492,22 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "rightOccNerveTapped");
                             debugPrint('Right occulomotor nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(parameter: "rightOccNerveDoubleTapped", exception: [
+                              "tectumDoubleTapped",
+                              "rightTrochlearNerveDoubleTapped"
+                            ]);
+                            debugPrint('Right occulomotor nerve double tapped');
+                          },
                           child: Container(
                             width: 35,
                             height: 35,
                             decoration: BoxDecoration(
-                                color: rightOccNerveTapped ? Colors.red : Colors.transparent,
+                                color: rightOccNerveDoubleTapped
+                                    ? Colors.red[800]
+                                    : rightOccNerveTapped
+                                        ? Colors.red
+                                        : Colors.transparent,
                                 borderRadius: BorderRadius.circular(18)),
                           ),
                         ),
@@ -234,11 +523,22 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "leftOccNerveTapped");
                             debugPrint('Left occulomotor nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(parameter: "leftOccNerveDoubleTapped", exception: [
+                              "tectumDoubleTapped",
+                              "leftTrochlearNerveDoubleTapped"
+                            ]);
+                            debugPrint('Left occulomotor nerve double tapped');
+                          },
                           child: Container(
                             width: 35,
                             height: 35,
                             decoration: BoxDecoration(
-                                color: leftOccNerveTapped ? Colors.red : Colors.transparent,
+                                color: leftOccNerveDoubleTapped
+                                    ? Colors.red[800]
+                                    : leftOccNerveTapped
+                                        ? Colors.red
+                                        : Colors.transparent,
                                 borderRadius: BorderRadius.circular(18)),
                           ),
                         ),
@@ -254,11 +554,22 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "leftTrochlearNerveTapped");
                             debugPrint('Left Trochlear nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(exception: [
+                              "leftPCGDoubleTapped",
+                              "tectumDoubleTapped",
+                              "leftOccNerveDoubleTapped"
+                            ], parameter: "leftTrochlearNerveDoubleTapped");
+                          },
                           child: Container(
                             width: 30,
                             height: 30,
                             decoration: BoxDecoration(
-                                color: leftTrochlearNerveTapped ? Colors.red : Colors.black45,
+                                color: leftTrochlearNerveDoubleTapped
+                                    ? Colors.red[800]
+                                    : leftTrochlearNerveTapped
+                                        ? Colors.red
+                                        : Colors.black45,
                                 borderRadius: BorderRadius.circular(15)),
                             child: const Center(
                                 child: Text(
@@ -280,11 +591,22 @@ class _VerticalDipState extends State<VerticalDip> {
 
                             debugPrint('Left Trochlear nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(exception: [
+                              "leftPCGDoubleTapped",
+                              "tectumDoubleTapped",
+                              "leftOccNerveDoubleTapped"
+                            ], parameter: "leftTrochlearNerveDoubleTapped");
+                          },
                           child: Container(
                             width: 135,
                             height: 8,
                             decoration: BoxDecoration(
-                                color: leftTrochlearNerveTapped ? Colors.red : Colors.black54,
+                                color: leftTrochlearNerveDoubleTapped
+                                    ? Colors.red[800]
+                                    : leftTrochlearNerveTapped
+                                        ? Colors.red
+                                        : Colors.black54,
                                 borderRadius:
                                     const BorderRadius.only(bottomRight: Radius.circular(6))),
                           ),
@@ -301,11 +623,22 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "leftTrochlearNerveTapped");
                             debugPrint('Left Trochlear nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(exception: [
+                              "leftPCGDoubleTapped",
+                              "tectumDoubleTapped",
+                              "leftOccNerveDoubleTapped"
+                            ], parameter: "leftTrochlearNerveDoubleTapped");
+                          },
                           child: Container(
                             width: 8,
                             height: 332,
                             decoration: BoxDecoration(
-                                color: leftTrochlearNerveTapped ? Colors.red : Colors.black54,
+                                color: leftTrochlearNerveDoubleTapped
+                                    ? Colors.red[800]
+                                    : leftTrochlearNerveTapped
+                                        ? Colors.red
+                                        : Colors.black54,
                                 borderRadius:
                                     const BorderRadius.only(bottomRight: Radius.circular(6))),
                           ),
@@ -322,11 +655,22 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "rightTrochlearNerveTapped");
                             debugPrint('Right Trochlear nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(exception: [
+                              "rightPCGDoubleTapped",
+                              "tectumDoubleTapped",
+                              "rightOccNerveDoubleTapped"
+                            ], parameter: "rightTrochlearNerveDoubleTapped");
+                          },
                           child: Container(
                             width: 8,
                             height: 335,
                             decoration: BoxDecoration(
-                                color: rightTrochlearNerveTapped ? Colors.red : Colors.black54,
+                                color: rightTrochlearNerveDoubleTapped
+                                    ? Colors.red[800]
+                                    : rightTrochlearNerveTapped
+                                        ? Colors.red
+                                        : Colors.black54,
                                 borderRadius:
                                     const BorderRadius.only(bottomLeft: Radius.circular(6))),
                           ),
@@ -343,11 +687,22 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "rightTrochlearNerveTapped");
                             debugPrint('Right Trochlear nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(exception: [
+                              "rightPCGDoubleTapped",
+                              "tectumDoubleTapped",
+                              "rightOccNerveDoubleTapped"
+                            ], parameter: "rightTrochlearNerveDoubleTapped");
+                          },
                           child: Container(
                             width: 30,
                             height: 30,
                             decoration: BoxDecoration(
-                                color: rightTrochlearNerveTapped ? Colors.red : Colors.black45,
+                                color: rightTrochlearNerveDoubleTapped
+                                    ? Colors.red[800]
+                                    : rightTrochlearNerveTapped
+                                        ? Colors.red
+                                        : Colors.black45,
                                 borderRadius: BorderRadius.circular(15)),
                             child: const Center(
                                 child: Text(
@@ -368,11 +723,22 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "rightTrochlearNerveTapped");
                             debugPrint('Right Trochlear nerve tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(exception: [
+                              "rightPCGDoubleTapped",
+                              "tectumDoubleTapped",
+                              "rightOccNerveDoubleTapped"
+                            ], parameter: "rightTrochlearNerveDoubleTapped");
+                          },
                           child: Container(
                             width: 120,
                             height: 8,
                             decoration: BoxDecoration(
-                                color: rightTrochlearNerveTapped ? Colors.red : Colors.black54,
+                                color: rightTrochlearNerveDoubleTapped
+                                    ? Colors.red[800]
+                                    : rightTrochlearNerveTapped
+                                        ? Colors.red
+                                        : Colors.black54,
                                 borderRadius: BorderRadius.circular(15)),
                           ),
                         ),
@@ -388,16 +754,122 @@ class _VerticalDipState extends State<VerticalDip> {
                             setToFalse(parameter: "tectumTapped");
                             debugPrint('Tectum tapped');
                           },
+                          onDoubleTap: () {
+                            setToFalse(parameter: "tectumDoubleTapped", exception: [
+                              "rightOccNerveDoubleTapped",
+                              "rightTrochlearNerveDoubleTapped",
+                              "leftTrochlearNerveDoubleTapped",
+                              "leftOccNerveDoubleTapped"
+                            ]);
+                            debugPrint('Tectum double tapped');
+                          },
                           child: Container(
                             width: 80,
                             height: 24,
                             decoration: BoxDecoration(
-                                color:
-                                    tectumTapped ? Colors.red : Colors.lightBlue.withOpacity(0.8),
+                                color: tectumDoubleTapped
+                                    ? Colors.red[800]
+                                    : tectumTapped
+                                        ? Colors.red
+                                        : Colors.lightBlue.withOpacity(0.8),
                                 borderRadius: BorderRadius.circular(5)),
                             child: const Center(
                                 child: Text(
                               "Tectum",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 470,
+                      left: 350,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            setToFalse(parameter: "leftRimlfTapped");
+                            debugPrint('leftRimlf tapped');
+                          },
+                          child: Container(
+                            width: 80,
+                            height: 24,
+                            decoration: BoxDecoration(
+                                color: leftRimlfTapped ? Colors.red : Colors.grey.withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: const Center(
+                                child: Text(
+                              "riMLF",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 465,
+                      left: 278,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onDoubleTap: () {
+                            setToFalse(
+                                parameter: "leftPCGDoubleTapped",
+                                exception: ["leftTrochlearNerveDoubleTapped"]);
+                            debugPrint('leftPCG tapped');
+                          },
+                          child: Container(
+                            width: 35,
+                            height: 35,
+                            decoration: BoxDecoration(
+                                color: leftPCGDoubleTapped ? Colors.red[800] : Colors.transparent,
+                                borderRadius: BorderRadius.circular(5)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 465,
+                      left: 154,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onDoubleTap: () {
+                            setToFalse(
+                                parameter: "rightPCGDoubleTapped",
+                                exception: ["rightTrochlearNerveDoubleTapped"]);
+                            debugPrint('rightPCG tapped');
+                          },
+                          child: Container(
+                            width: 35,
+                            height: 35,
+                            decoration: BoxDecoration(
+                                color: rightPCGDoubleTapped ? Colors.red[800] : Colors.transparent,
+                                borderRadius: BorderRadius.circular(5)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 470,
+                      left: 30,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            setToFalse(parameter: "rightRimlfTapped");
+                            debugPrint('rightRimlf tapped');
+                          },
+                          child: Container(
+                            width: 80,
+                            height: 24,
+                            decoration: BoxDecoration(
+                                color: rightRimlfTapped ? Colors.red : Colors.grey.withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: const Center(
+                                child: Text(
+                              "riMLF",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             )),
                           ),
@@ -420,44 +892,19 @@ class _VerticalDipState extends State<VerticalDip> {
                     style: TextStyle(color: Color(0xff000000), fontSize: 30),
                   ),
                   Text(
-                    rightOccNerveTapped == true && leftOccNerveTapped == false
-                        ? "Name: Right CN III Palsy"
-                        : rightOccNerveTapped == false && leftOccNerveTapped == true
-                            ? "Name: Left CN III Palsy"
-                            : rightOccNerveTapped == true && leftOccNerveTapped == true
-                                ? "Name: CN III Palsy on Both Eyes"
-                                : rightTrochlearNerveTapped == true &&
-                                        leftTrochlearNerveTapped == false
-                                    ? "Name: Right Trochlear Nerve Palsy"
-                                    : rightTrochlearNerveTapped == false &&
-                                            leftTrochlearNerveTapped == true
-                                        ? "Name: Left Trochlear Nerve Palsy"
-                                        : rightTrochlearNerveTapped == true &&
-                                                leftTrochlearNerveTapped == true
-                                            ? "Name: Trochlear Nerve Palsy on Both Eyes"
-                                            : tectumTapped == true
-                                                ? "Name: Progressive Supranuclear Palsy"
-                                                : "Normal",
+                    getDisorder(),
                     style: const TextStyle(color: Color(0xff000000), fontSize: 20),
                   ),
                   Text(
-                    rightOccNerveTapped == true || leftOccNerveTapped == true
-                        ? "Signs: Defective vertical gaze worse with downgaze "
-                        : rightTrochlearNerveTapped == true || leftTrochlearNerveTapped == true
-                            ? "Signs: Defective superior oblique, head tilt, hypertropia"
-                            : tectumTapped == true
-                                ? "Signs: Defective vertical gaze worse with downgaze, poor lid function, convergence insufficiency"
-                                : "",
+                    getSigns(),
                     style: const TextStyle(color: Color(0xff000000), fontSize: 20),
                   ),
                   Text(
-                    rightOccNerveTapped == true || leftOccNerveTapped == true
-                        ? "Symptoms: Vertical diplopia  "
-                        : rightTrochlearNerveTapped == true || leftTrochlearNerveTapped == true
-                            ? "Symptoms: Vertical diplopia, pain \nCause of lesion: Trauma, vascular anomalies in diabetes, increased intracranial pressure "
-                            : tectumTapped == true
-                                ? "Symptoms: Vertical diplopia, imbalance, slow movements \nCause of lesion: Gradual deterioration and death of specific volumes of brain esp . tectum"
-                                : "",
+                    getSymptons(),
+                    style: const TextStyle(color: Color(0xff000000), fontSize: 20),
+                  ),
+                  Text(
+                    getCauses(),
                     style: const TextStyle(color: Color(0xff000000), fontSize: 20),
                   ),
                   Center(
@@ -490,7 +937,7 @@ class _VerticalDipState extends State<VerticalDip> {
                   ),
                   Center(
                     child: Text(
-                      "$directionText gaze${rightOccNerveTapped == true && leftOccNerveTapped == false ? " with Right CN III Palsy" : rightOccNerveTapped == false && leftOccNerveTapped == true ? " with Left CN III Palsy" : rightOccNerveTapped == true && leftOccNerveTapped == true ? " with CN III Palsy on Both Eyes" : rightTrochlearNerveTapped == true && leftTrochlearNerveTapped == false ? " with Right Trochlear Nerve Palsy" : rightTrochlearNerveTapped == false && leftTrochlearNerveTapped == true ? " with Left Trochlear Nerve Palsy" : rightTrochlearNerveTapped == true && leftTrochlearNerveTapped == true ? " with Trochlear Palsy on Both Eyes" : tectumTapped ? " Progressive Supranuclear Palsy" : ""}",
+                      "$directionText gaze with ${getDisorder().replaceFirst("Name: ", "").replaceFirst("No disorder", "No Damage")}",
                       style: const TextStyle(color: Color(0xff000000), fontSize: 16),
                     ),
                   ),
