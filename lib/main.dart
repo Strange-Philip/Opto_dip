@@ -2,7 +2,6 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:orthoptics/instructions.dart';
 import 'package:orthoptics/verticalDip.dart';
 import 'package:orthoptics/horizontalDip.dart';
-import 'package:orthoptics/test.dart';
 
 void main() {
   runApp(const MyApp());
@@ -64,10 +63,10 @@ class _MyAppState extends State<MyApp> {
                   icon: const Icon(FluentIcons.gripper_dots_vertical),
                   title: const Text("Vertical Diplopia"),
                   body: const VerticalDip()),
-              PaneItem(
-                  icon: const Icon(FluentIcons.red_eye),
-                  title: const Text("Test"),
-                  body: const TestContainer()),
+              // PaneItem(
+              //     icon: const Icon(FluentIcons.red_eye),
+              //     title: const Text("Test"),
+              //     body: const TestContainer()),
             ]),
       ),
     );
