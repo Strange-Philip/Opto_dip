@@ -139,6 +139,14 @@ class _InstructionPageState extends State<InstructionPage> {
                         fontSize: 18,
                       ),
                     ),
+                    const Text(
+                      "LGN: Lateral geniculate nucleus",
+                      maxLines: 3,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
                   ],
                 ),
               ),

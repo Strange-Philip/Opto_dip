@@ -25,11 +25,11 @@ class _MyAppState extends State<MyApp> {
       home: NavigationView(
         appBar: const NavigationAppBar(
             title: Text(
-              "Orthoptics Project",
+              "Horizontal and Vertical Strabismic Deviations And Visual Defects",
               style: TextStyle(color: Color(0xffFFFFFF), fontSize: 20),
             ),
             automaticallyImplyLeading: false,
-            backgroundColor: Color(0xff0096FF)),
+            backgroundColor: Colors.black),
         pane: NavigationPane(
             selected: index,
             onChanged: (newIndex) {
@@ -40,6 +40,12 @@ class _MyAppState extends State<MyApp> {
             indicator: const StickyNavigationIndicator(
               color: Color(0xff0096FF),
             ),
+            footerItems: [
+              PaneItem(
+                  icon: const Icon(FluentIcons.info),
+                  title: const Text("CopyRight"),
+                  body: const SizedBox()),
+            ],
             displayMode: PaneDisplayMode.auto,
             items: [
               PaneItem(
@@ -48,11 +54,11 @@ class _MyAppState extends State<MyApp> {
                   body: const InstructionPage()),
               PaneItem(
                   icon: const Icon(FluentIcons.horizontal_tab_key),
-                  title: const Text("Horizontal Diplopia"),
+                  title: const Text("Horizontal Deviations"),
                   body: const HorizontalDip()),
               PaneItem(
                   icon: const Icon(FluentIcons.gripper_dots_vertical),
-                  title: const Text("Vertical Diplopia"),
+                  title: const Text("Vertical Deviations"),
                   body: const VerticalDip()),
               PaneItem(
                   icon: const Icon(FluentIcons.red_eye),

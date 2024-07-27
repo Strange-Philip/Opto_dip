@@ -778,6 +778,12 @@ class _HorizontalDipState extends State<HorizontalDip> {
                     getCauses(),
                     style: const TextStyle(color: Color(0xff000000), fontSize: 22),
                   ),
+                  const Center(
+                    child: Text(
+                      "Right            Left",
+                      style: TextStyle(color: Color(0xff000000), fontSize: 20),
+                    ),
+                  ),
                   Center(
                     child: Listener(
                       onPointerHover: (event) {
