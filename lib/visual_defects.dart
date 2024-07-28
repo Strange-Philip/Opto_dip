@@ -487,7 +487,7 @@ class _VisualDefectsState extends State<VisualDefects> {
                       ? const SizedBox.shrink()
                       : const Center(
                           child: Text(
-                            "Right            Left",
+                            "Left            Right",
                             style: TextStyle(color: Color(0xff000000), fontSize: 20),
                           ),
                         ),
