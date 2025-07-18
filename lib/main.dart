@@ -1,4 +1,4 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:orthoptics/instructions.dart';
 import 'package:orthoptics/verticalDip.dart';
 import 'package:orthoptics/horizontalDip.dart';
@@ -18,53 +18,58 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int index = 0;
 
+  final List<Widget> pages = [
+    const InstructionPage(),
+    const HorizontalDip(),
+    const VerticalDip(),
+    const VisualDefects(),
+  ];
+
+  final List<BottomNavigationBarItem> navItems = [
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.info),
+      label: "Instructions",
+    ),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.horizontal_rule),
+      label: "Horizontal Deviations",
+    ),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.more_vert),
+      label: "Vertical Deviations",
+    ),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.remove_red_eye),
+      label: "Visual Defects",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return FluentApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: NavigationView(
-        appBar: const NavigationAppBar(
-            title: Text(
-              "Horizontal and Vertical Strabismic Deviations And Visual Defects",
-              style: TextStyle(color: Color(0xffFFFFFF), fontSize: 20),
-            ),
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.black),
-        pane: NavigationPane(
-            selected: index,
-            onChanged: (newIndex) {
-              setState(() {
-                index = newIndex;
-              });
-            },
-            indicator: const StickyNavigationIndicator(
-              color: Color(0xff0096FF),
-            ),
-            footerItems: [
-              PaneItem(
-                  icon: const Icon(FluentIcons.info),
-                  title: const Text("CopyRight"),
-                  body: const SizedBox()),
-            ],
-            displayMode: PaneDisplayMode.auto,
-            items: [
-              PaneItem(
-                  icon: const Icon(FluentIcons.info),
-                  title: const Text("Instructions"),
-                  body: const InstructionPage()),
-              PaneItem(
-                  icon: const Icon(FluentIcons.horizontal_tab_key),
-                  title: const Text("Horizontal Deviations"),
-                  body: const HorizontalDip()),
-              PaneItem(
-                  icon: const Icon(FluentIcons.gripper_dots_vertical),
-                  title: const Text("Vertical Deviations"),
-                  body: const VerticalDip()),
-              PaneItem(
-                  icon: const Icon(FluentIcons.red_eye),
-                  title: const Text("Visual Defects"),
-                  body: const VisualDefects()),
-            ]),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "Horizontal and Vertical Strabismic Deviations And Visual Defects",
+            style: TextStyle(color: Color(0xffFFFFFF), fontSize: 20),
+          ),
+          backgroundColor: Colors.black,
+          automaticallyImplyLeading: false,
+        ),
+        body: pages[index],
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: index,
+          onTap: (newIndex) {
+            setState(() {
+              index = newIndex;
+            });
+          },
+          selectedItemColor: const Color(0xff0096FF),
+          unselectedItemColor: Colors.grey,
+          items: navItems,
+        ),
       ),
     );
   }
